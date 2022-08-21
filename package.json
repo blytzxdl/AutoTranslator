@@ -1,0 +1,13 @@
+{
+  "name": "AutoTranslator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/blytzxdl/AutoTranslator.git",
+  "author": "西都凉 <shengyss@163.com>",
+  "license": "GPL3",
+  "dependencies": {
+    "global-agent": "^3.0.0",
+    "translation-google": "^0.2.1",
+    "webpack": "^5.74.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+	"nums": 350,
+	"loopTime": 2000,
+	"maxLength": 4000,
+	"proxy": "http://localhost:代理端口",
+	"suffix": "com",
+	"alias": {
+		"原词": "替换词"
+	}
+}
