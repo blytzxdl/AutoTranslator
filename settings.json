@@ -4,7 +4,9 @@
 	"maxLength": 4000,
 	"proxy": "http://localhost:代理端口",
 	"suffix": "com",
-	"alias": {
-		"原词": "替换词"
+	"alias": [],
+	"clash": {
+		"port": null,
+		"secret": null
 	}
 }

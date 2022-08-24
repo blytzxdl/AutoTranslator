@@ -1,10 +1,9 @@
 var webpack = require('webpack')
 const path = require("path");
 const base = path.join(__dirname);
-// console.log(webpack);
 webpack({
     mode: "production",
-    entry: path.resolve(base, "./index.js"),
+    entry: path.resolve(base, "./index.mjs"),
     target: 'node',
     output: {
       filename: "translator.js",
