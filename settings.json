@@ -4,9 +4,16 @@
 	"maxLength": 4000,
 	"proxy": "http://localhost:代理端口",
 	"suffix": "com",
-	"alias": [],
+	"origin": "auto",
+	"target": "zh-cn",
+	"alias": {
+		"原词": "替换词"
+	},
 	"clash": {
 		"port": null,
-		"secret": null
+		"secret": null,
+		"selector": [
+			""
+		]
 	}
 }
