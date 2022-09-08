@@ -6,30 +6,33 @@ import { getAllProxies, testProxies, selectProxies } from './api/clash.mjs';
 
 const readFile = promisify(fs.readFile)//读写操作promise化
 const writeFile = promisify(fs.writeFile)
+
 let settings//配置项
 let nums = 350 //单次合并翻译数，实际翻译上限由maxLength决定，超过500一般无意义，过低会降低整体翻译速度
+let maxLength = 4000//单次翻译文本字符数上限，不建议超过5000，过高会导致漏翻
 let loopTime = 2000//翻译请求间隔，不建议低于2000ms,过低易导致封ip
 let alias = { '原词': '替换词' }//一般用于手动过滤和替换角色名，其它词亦可，受限于翻译机制，不保证准确性
-let list = {}//翻译源文件
-let trans = {}//已翻译内容
 let proxy = 'http://localhost:代理端口'//代理地址，可避免开全局代理
 let suffix = 'com'//谷歌翻译网址,默认为com
-let origin = 'auto'//源语言
 let target = 'zh-cn'//目标语言
-let loop//请求定时器
-let globalProxyAgent//全局代理
-let maxLength = 4000//单次翻译文本上限，不建议超过5000，过高会导致漏翻
-let tryNum//重试合并数量
+let origin = 'auto'//源语言
 let clash = {
     port: null,//clash控制端口，见于配置文件或Clash Core后括号内数字
     secret: null,//clash的secret,见于配置文件或web ui设置
     selector: [""]//策略组
 }
+
+let list = {}//翻译源文件
+let trans = {}//已翻译内容
+let loop//请求定时器
+let globalProxyAgent//全局代理
+let tryNum//重试合并数量
 let proxies = null//代理节点列表
 let proxiesFilter = ["Direct", "Reject", "Selector", "Fallback", "URLTest"]//过滤节点
 let usableProxies = []//可用节点
 let clashSelector = [""]//策略组
 let usedProxies = []//已使用节点
+
 //初始化
 async function init() {
     let res
